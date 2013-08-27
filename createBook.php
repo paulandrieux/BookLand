@@ -1,3 +1,8 @@
+<?php
+    include('./php/pdo.php');
+    include('./php/bookClass.php');
+    include('./php/contactClass.php');
+?>
 <!DOCTYPE html>
 <html>
     <head>
@@ -25,13 +30,13 @@
             <br>
             <input type="text" class="presentation" name="presentation" placeholder="Présentation">
             <br>
-            <button type="submit">Send data</button>
+            <button type="submit" name="submit">Send data</button>
         </form>
 
 
         <?php
             if (isset($_POST['submit'])) {
-                echo "test";
+                $book = new book ('',$_POST['nom'],$_POST['occupe']);
             }
         ?>
 
@@ -41,21 +46,21 @@
 
         <!-- Script Library -->
             <!-- Bootstrap -->
-                <script type="text/javascript" src="./js/bootstrap/tooltip.js"></script>
-                <script type="text/javascript" src="./js/bootstrap/affix.js"></script>
-                <script type="text/javascript" src="./js/bootstrap/alert.js"></script>
-                <script type="text/javascript" src="./js/bootstrap/button.js"></script>
-                <script type="text/javascript" src="./js/bootstrap/carousel.js"></script>
-                <script type="text/javascript" src="./js/bootstrap/collapse.js"></script>
-                <script type="text/javascript" src="./js/bootstrap/dropdown.js"></script>
-                <script type="text/javascript" src="./js/bootstrap/modal.js"></script>
-                <script type="text/javascript" src="./js/bootstrap/popover.js"></script>
-                <script type="text/javascript" src="./js/bootstrap/scrollspy.js"></script>
-                <script type="text/javascript" src="./js/bootstrap/tab.js"></script>
-                <script type="text/javascript" src="./js/bootstrap/transition.js"></script>
+                <script type="text/javascript" src="js/bootstrap/tooltip.js"></script>
+                <script type="text/javascript" src="js/bootstrap/affix.js"></script>
+                <script type="text/javascript" src="js/bootstrap/alert.js"></script>
+                <script type="text/javascript" src="js/bootstrap/button.js"></script>
+                <script type="text/javascript" src="js/bootstrap/carousel.js"></script>
+                <script type="text/javascript" src="js/bootstrap/collapse.js"></script>
+                <script type="text/javascript" src="js/bootstrap/dropdown.js"></script>
+                <script type="text/javascript" src="js/bootstrap/modal.js"></script>
+                <script type="text/javascript" src="js/bootstrap/popover.js"></script>
+                <script type="text/javascript" src="js/bootstrap/scrollspy.js"></script>
+                <script type="text/javascript" src="js/bootstrap/tab.js"></script>
+                <script type="text/javascript" src="js/bootstrap/transition.js"></script>
             <!-- Modernizr -->
-                <script type="text/javascript" src="./js/modernizr.custom.js"></script>
+                <script type="text/javascript" src="js/modernizr.custom.js"></script>
             <!-- Custom -->
-                <script type="text/javascript" src="./js/bookland.custom.js"></script>
+                <script type="text/javascript" src="js/bookland.custom.js"></script>
     </body>
 </html>
