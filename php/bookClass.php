@@ -12,8 +12,7 @@
         protected $website;
         protected $description;
 
-        public function __construct ($creationDate, $lastName, $mail, $phone, $website, $description) {
-            $this -> creationDate = $creationDate;
+        public function __construct ($lastName, $firstName, $mail, $phone, $website, $description) {
             $this -> lastName = $lastName;
             $this -> firstName = $firstName;
             $this -> mail = $mail;
@@ -76,6 +75,20 @@
         }
         public function setDescription ($setData) {
             $this -> description = $setData;
+        }
+
+        public function addBookInDb ($pdo) {
+            $searchplace = $pdo -> prepare('SELECT mail FROM book WHERE mail=?');
+            $paramsearch = array($this -> getMail());
+            $searchplace -> execute($paramsearch);
+
+            if ($searchplace -> rowCount() > 0) {
+                return "already in ddb";
+            } else {
+                $req = $pdo -> prepare('INSERT INTO book SET firstName=:firstName, lastName=:lastName, mail=:mail, phone=:phone, website=:website, description=:description');
+                $parametres = array('firstName' => $this -> getFirstName(), 'lastName' => $this -> getLastName(), 'mail' => $this -> getMail(), 'phone' => $this -> getPhone(), 'website' => $this -> getWebsite(), 'description' => $this -> getDescription());
+                $req -> execute($parametres);
+            }
         }
 
     }

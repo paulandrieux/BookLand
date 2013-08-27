@@ -2,6 +2,13 @@
     include('./php/pdo.php');
     include('./php/bookClass.php');
     include('./php/contactClass.php');
+
+    $idBook = $_GET['id'];
+
+    $bookData = $pdo -> query('SELECT * FROM book WHERE id='.$idBook);
+    if ($data = $bookData->fetch()) {
+        $book = new book ($data['lastName'], $data['firstName'], $data['mail'], $data['phone'], $data['website'], $data['description']);
+    }
 ?>
 <!DOCTYPE html>
 <html>
@@ -18,30 +25,8 @@
 
 <!-- END COMMUN PART -->
 
-        <form name="createBook" method="post" action="">
-            <input type="text" class="firstName" name="firstName" placeholder="Prénom">
-            <input type="text" class="lastName" name="lastName" placeholder="Nom">
-            <br>
-            <input type="text" class="phone" name="phone" placeholder="Téléphone">
-            <input type="text" class="website" name="website" placeholder="Site Internet">
-            <br>
-            <input type="text" class="mail" name="mail" placeholder="Adresse mail">
-            <input type="text" class="mailConfirm" name="mailConfirm" placeholder="Correction adresse mail">
-            <br>
-            <input type="text" class="description" name="description" placeholder="Description">
-            <br>
-            <button type="submit" name="submit">Send data</button>
-        </form>
-
-
-        <?php
-            if (isset($_POST['submit']) && ($_POST['mail'] == $_POST['mailConfirm'])) {
-                $book = new book ($_POST['lastName'],$_POST['firstName'],$_POST['mail'],$_POST['phone'],$_POST['website'],$_POST['description']);
-                echo $book -> addBookInDb($pdo);
-            } else {
-                echo "ferme ta gueule";
-            }
-        ?>
+        <h1><?php echo substr($book -> getFirstName(), 0, 1).' '.substr($book -> getLastName(), 0, 1) ?></h1>
+        <h2><?php echo $book -> getDescription() ?></h2>
 
 <!-- START COMMUN PART -->
 

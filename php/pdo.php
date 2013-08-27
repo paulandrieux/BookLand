@@ -3,8 +3,7 @@
 try {
     $pdo = new PDO ('mysql:host=localhost;dbname=bdd_book_land','root','root');
 }
-catch (Exception $e)
-{
+catch (Exception $e) {
     echo "probleme : ".$e;
     exit();
 }
