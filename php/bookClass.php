@@ -12,7 +12,9 @@
         protected $website;
         protected $description;
 
-        public function __construct ($lastName, $firstName, $mail, $phone, $website, $description) {
+        public function __construct ($idBook, $creationDate, $lastName, $firstName, $mail, $phone, $website, $description) {
+            $this -> idBook = $idBook;
+            $this -> creationDate = $creationDate;
             $this -> lastName = $lastName;
             $this -> firstName = $firstName;
             $this -> mail = $mail;

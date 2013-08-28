@@ -2,14 +2,18 @@
     include('./php/pdo.php');
     include('./php/bookClass.php');
     include('./php/contactClass.php');
+    include('./php/functions.php');
 
     $idBook = $_GET['id'];
 
-    $bookData = $pdo -> query('SELECT * FROM book WHERE id='.$idBook);
-    if ($data = $bookData->fetch()) {
-        $book = new book ($data['lastName'], $data['firstName'], $data['mail'], $data['phone'], $data['website'], $data['description']);
-    }
+    /* To factorize */
+        $bookData = $pdo -> query('SELECT * FROM book WHERE id='.$idBook);
+        if ($data = $bookData->fetch()) {
+            $book = new book ($data['id'],$data['creationDate'],$data['lastName'], $data['firstName'], $data['mail'], $data['phone'], $data['website'], $data['description']);
+        }
+    /* --- */
 ?>
+
 <!DOCTYPE html>
 <html>
     <head>

@@ -36,10 +36,10 @@
 
         <?php
             if (isset($_POST['submit']) && ($_POST['mail'] == $_POST['mailConfirm'])) {
-                $book = new book ($_POST['lastName'],$_POST['firstName'],$_POST['mail'],$_POST['phone'],$_POST['website'],$_POST['description']);
+                $book = new book ('','',$_POST['lastName'],$_POST['firstName'],$_POST['mail'],$_POST['phone'],$_POST['website'],$_POST['description']);
                 echo $book -> addBookInDb($pdo);
             } else {
-                echo "ferme ta gueule";
+                echo "the mails are differents";
             }
         ?>
 
