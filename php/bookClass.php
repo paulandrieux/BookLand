@@ -94,8 +94,11 @@
         }
 
         public function setIdBookFromDb ($pdo) {
-            $bookData = $pdo -> query('SELECT id FROM book WHERE mail='.$this -> mail);
-            $this -> idBook = $bookData;
+            $bookData = $pdo -> query('SELECT * FROM book WHERE mail='.$this -> mail);
+
+            if ($data = $bookData->fetch()) {
+                $this -> idBook = $data['id'];
+            }
         }
 
     }

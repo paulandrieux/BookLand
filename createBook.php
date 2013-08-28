@@ -3,6 +3,7 @@
     include('./php/pdo.php');
     include('./php/bookClass.php');
     include('./php/contactClass.php');
+    include('./php/imgClass.php');
 ?>
 <!DOCTYPE html>
 <html>
@@ -34,6 +35,7 @@
             <input type="text" class="description" name="description" placeholder="Description">
             <br>
             <input type="file" name="dlImg" size="50">
+            <input type="text" name="ImgDescription">
             <br>
             <button type="submit" name="submit">Send data</button>
 
@@ -50,9 +52,10 @@
                     $pathDestination = 'img/bookImg/';
                     $imgName = $book -> getIdBook().'_'.$_FILES['dlImg']['name'];
                     move_uploaded_file($_FILES['dlImg']['tmp_name'], $pathDestination.$imgName);
-                    echo "works";
+                    $img1 = new img('',$book -> getIdBook(),$imgName,$_POST['ImgDescription']);
+                    $img1 -> addImginDb($pdo);
                 } else {
-                    echo "arg";
+                    echo "the upload of the image failed";
                 }
 
             } else {
