@@ -9,12 +9,20 @@
 
  function showlastbook($pdo){
 
-	$listBook = $pdo->query("SELECT id, creationDate, lastName, firstName, description FROM book ORDER BY creationDate DESC");
+ 	
+	$listBook = $pdo->query("SELECT id, creationDate, lastName, firstName, description FROM book ORDER BY creationDate DESC, id LIMIT 7");
 		while ($list=$listBook->fetch())
 			{
-				echo "<div class='client'  style='margin-top: 20px; margin-left: 204px;'>Le client s'appelle ".$list['lastName']." ".$list['firstName']." et a été sur cette emplacement le ".$list['creationDate']." et voici sa description : ".$list['description'].".</div>";
+				
+				
+				$initialeLastName = substr($list['lastName'], 0, 1);
+				$initialeFirstName = substr($list['firstName'], 0, 1);
+				echo $initialeLastName." ".$initialeFirstName.". Sa description : ".$list['description']." et voici l'adresse de son book : 127.0.0.1/bookland/books.php?id=".$list['id'].".<br/>";
+				
 			}
+
 	$listBook->closeCursor();
+	
 
 }
 ?>
