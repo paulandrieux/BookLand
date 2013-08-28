@@ -1,4 +1,5 @@
-<?php
+<?php 
+    ob_start(); 
     include('./php/pdo.php');
     include('./php/bookClass.php');
     include('./php/contactClass.php');
@@ -18,7 +19,9 @@
 
 <!-- END COMMUN PART -->
 
-        <form name="createBook" method="post" action="">
+
+        <!-- Book registrering form -->
+        <form name="createBook" enctype="multipart/form-data" method="post" action="#">
             <input type="text" class="firstName" name="firstName" placeholder="Prénom">
             <input type="text" class="lastName" name="lastName" placeholder="Nom">
             <br>
@@ -30,7 +33,10 @@
             <br>
             <input type="text" class="description" name="description" placeholder="Description">
             <br>
+            <input type="file" name="dlImg" size="50">
+            <br>
             <button type="submit" name="submit">Send data</button>
+
         </form>
 
 
@@ -38,9 +44,22 @@
             if (isset($_POST['submit']) && ($_POST['mail'] == $_POST['mailConfirm'])) {
                 $book = new book ('','',$_POST['lastName'],$_POST['firstName'],$_POST['mail'],$_POST['phone'],$_POST['website'],$_POST['description']);
                 echo $book -> addBookInDb($pdo);
+                $book -> setIdBookFromDb($pdo);
+
+                if ((isset($_FILES['dlImg']['tmp_name'])&&($_FILES['dlImg']['error'] == UPLOAD_ERR_OK))) {
+                    $pathDestination = 'img/bookImg/';
+                    $imgName = $book -> getIdBook().'_'.$_FILES['dlImg']['name'];
+                    move_uploaded_file($_FILES['dlImg']['tmp_name'], $pathDestination.$imgName);
+                    echo "works";
+                } else {
+                    echo "arg";
+                }
+
             } else {
                 echo "the mails are differents";
             }
+
+                
         ?>
 
 <!-- START COMMUN PART -->

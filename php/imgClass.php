@@ -1,26 +1,18 @@
 <?php
 
-    // Cet objet concerne toutes informations necessaire à un book
+    // Cet objet concerne toutes les images
 
     class book {
         protected $idBook;
         protected $creationDate;
         protected $lastName;
         protected $firstName;
-        protected $mail;
-        protected $phone;
-        protected $website;
-        protected $description;
 
         public function __construct ($idBook, $creationDate, $lastName, $firstName, $mail, $phone, $website, $description) {
             $this -> idBook = $idBook;
             $this -> creationDate = $creationDate;
             $this -> lastName = $lastName;
             $this -> firstName = $firstName;
-            $this -> mail = $mail;
-            $this -> phone = $phone;
-            $this -> website = $website;
-            $this -> description = $description;
         }
 
         public function getIdBook () {
@@ -94,8 +86,10 @@
         }
 
         public function setIdBookFromDb ($pdo) {
-            $bookData = $pdo -> query('SELECT id FROM book WHERE mail='.$this -> mail);
-            $this -> idBook = $bookData;
+                $bookData = $pdo -> query('SELECT id FROM book WHERE mail='.$this -> mail);
+                if ($data = $bookData->fetch()) {
+                    $this -> idBook = $data['id'];
+                }
         }
 
     }
