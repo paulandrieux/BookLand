@@ -24,8 +24,8 @@
         <header></header>
 
 <!-- END COMMUN PART -->
-
-        <h1><?php echo substr($book -> getFirstName(), 0, 1).' '.substr($book -> getLastName(), 0, 1) ?></h1>
+        <!-- Affiche les initiales en majuscule dans le h1 et la description dans le h2 -->
+        <h1><?php echo strtoupper(substr($book -> getFirstName(), 0, 1)).strtoupper(substr($book -> getLastName(), 0, 1)) ?></h1>
         <h2><?php echo $book -> getDescription() ?></h2>
 
 <!-- START COMMUN PART -->
