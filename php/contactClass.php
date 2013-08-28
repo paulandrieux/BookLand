@@ -17,8 +17,7 @@
         protected $messageContent;
 
 
-        public function __construct ($idBookContacted, $lastName, $firstName, $phone, $mail, $companyName, $companyAdress, $companyZip, $companyCity, $messageObject, $messageContent) {
-            $this -> idBookContacted = $idBookContacted;
+        public function __construct ($lastName, $firstName, $phone, $mail, $companyName, $companyAdress, $companyZip, $companyCity, $messageObject, $messageContent) {
             $this -> lastName = $lastName;
             $this -> firstName = $firstName;
             $this -> phone = $phone;
@@ -108,12 +107,12 @@
             $this -> messageObject = $setData;
         }
 
-        public function getId () {
+       /* public function getId () {
             return $this -> id;
         }
         public function setId ($setData) {
             $this -> id = $setData;
-        }
+        }*/
 
         public function getMessageContent () {
             return $this -> messageContent;
@@ -121,6 +120,13 @@
         public function setMessageContent ($setData) {
             $this -> messageContent = $setData;
         }
-
-    }
+		
+		public function addContactInDb ($pdo) {
+				
+            $req = $pdo -> prepare('INSERT INTO contact SET lastName=:lastName, firstName=:firstName, phone=:phone, mail=:mail, companyName=:companyName, companyAdress=:companyAdress, companyZip=:companyZip, companyCity=:companyCity, messageObject=:messageObject, messageContent=:messageContent');
+            $parametres = array('lastName' => $this -> getLastName(), 'firstName' => $this -> getFirstName(), 'phone' => $this ->getPhone(), 'mail' => $this -> getMail(), 'companyName' => $this ->getCompanyName(), 'companyAdress' => $this ->getCompanyAdress(), 'companyZip' => $this -> getCompanyZip(), 'companyCity' => $this -> getCompanyCity(), 'messageObject' => $this -> getmessageObject(), 'messageContent' => $this -> getmessageContent());
+            $req -> execute($parametres);
+			}
+		
+	}
 ?>
