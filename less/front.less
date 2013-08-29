@@ -1,0 +1,114 @@
+//
+// General
+//
+
+body {
+    background-color: @white-background;
+}
+
+.container {
+    width: 920px;
+    height: 100%;
+    margin: 0 auto;
+    padding: 0;
+    position: relative;
+    .box-sizing();
+}
+
+span.book {
+    font-family: 'Fauna One', serif;
+}
+
+    // /
+    // / Header
+    // /
+
+    header {
+        width: 100%;
+        height: 50px;
+        margin: 34px 0 0;
+        background-color: @blue-dark;
+
+        .btn {
+            margin: 6px 0 0;
+        }
+    }
+
+    .title {
+        position: absolute;
+        margin: -14px 0 0;
+        font-size: 24px;
+        color: @white;
+        font-family: 'Fauna One', serif;
+
+        &:hover {
+            color: @blue-light;
+            text-decoration: none;
+        }
+    }
+
+    .headline {
+        width: 100%;
+        height: 70px;
+        background-color: @pink;
+        .box-sizing();
+    }
+
+
+    .content {
+        width: 920px;
+        padding: 5px;
+        margin: 40px auto 0;
+        background-color: @white;
+        .box-sizing();
+    }
+
+
+
+
+// /
+// / Home
+// /
+
+.headline {
+    h1 {
+        text-align: center;
+        color: @white;
+        font-family: 'Fauna One', serif;
+        font-size: 24px;
+    }
+
+    .btn {
+        position: absolute;
+        top: 0;
+        right: 0;
+        position: absolute;
+        top: 16px;
+        right: 0;
+    }
+}
+
+.imgGrid {
+    a {
+        display: block;
+        float: left;
+
+        &.small {
+            width: 178px;
+            height: 165px;
+            background-image: url(http://placehold.it/178x165);
+        }
+
+        &.long {
+            width: 361px;
+            height: 165px;
+            background-image: url(http://placehold.it/361x165);
+        }
+
+        &.large {
+            width: 361px;
+            height: 335px;
+            background-image: url(http://placehold.it/361x335);
+        }
+    }
+}
