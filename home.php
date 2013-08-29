@@ -56,15 +56,30 @@
                         <div class="content">
                             <div class="container">
                                 <div class="imgGrid">
-                                    <a href="#" class="imgGrid1 small"></a>
-                                    <a href="#" class="imgGrid2 long"></a>
-                                    <a href="#" class="imgGrid3 large"></a>
-                                    <a href="#" class="imgGrid4 long"></a>
-                                    <a href="#" class="imgGrid5 small"></a>
+                                    <a href="#" class="imgGrid1 imgGridItem small"></a>
+                                    <a href="#" class="imgGrid2 imgGridItem long"></a>
+                                    <a href="#" class="imgGrid3 imgGridItem large"></a>
+                                    <a href="#" class="imgGrid4 imgGridItem long"></a>
+                                    <a href="#" class="imgGrid5 imgGridItem small"></a>
                                 </div>
-                                <div class="capsule">
-                                    <?php showlastbook($pdo); ?>
+                                <div class="homeContent">
+                                    <div class="lastBook">
+                                        <?php showlastbook($pdo); ?>
+                                    </div>
+                                    <div class="side">
+                                        <a href="" class="btn important"><i class="icon-zoom-in"></i> Voir tout les books</a>
+                                        <h3>A propos :</h3>
+                                        <p><span class="book">BookLand</span> est une interface servant à mettre en relation les différents protagonistes du monde du graphisme.  Que vous soyez professionnel , amateur ou débutant vous pouvez mettre en ligne votre <span class="book">Book</span> et proposer vos services. En vous inscrivant vous accéderez aux photos et informations qui vous intéresse. Les informations personnels ne seront pas dévoilé au grand public, elles sont géré par l’administrateur.
+                                        N’hésitez plus et inscrivez vous au plus vite !
+                                        </p>
+                                        <ul class="social">
+                                            <li class="social-item facebook"><a href=""><i class="icon-facebook-sign"></i> BookLand</a></li>
+                                            <li class="social-item twitter"><a href=""><i class="icon-twitter-sign"></i> @BookLand</a></li>
+                                            <li class="social-item google-plus"><a href=""><i class="icon-google-plus-sign"></i> BookLand</a></li>
+                                        </ul>
+                                    </div>
                                 </div>
+                                
                             </div>
                         </div>
 

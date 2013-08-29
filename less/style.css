@@ -7516,8 +7516,23 @@ body {
   -moz-box-sizing: border-box;
   -webkit-box-sizing: border-box;
 }
+.content .container {
+  width: 100%;
+}
 span.book {
   font-family: 'Fauna One', serif;
+}
+h3 {
+  font-size: 16px;
+  color: #1a3841;
+  background-color: #f1eded;
+  padding: 7px 4px;
+  display: inline-block;
+}
+p {
+  text-align: justify;
+  line-height: 18px;
+  font-size: 13px;
 }
 header {
   width: 100%;
@@ -7568,24 +7583,94 @@ header .btn {
   top: 16px;
   right: 0;
 }
-.imgGrid a {
+.imgGrid {
+  overflow: hidden;
+  margin: 0 0 50px;
+}
+.imgGrid .imgGridItem {
   display: block;
   float: left;
+  margin: 0 5px 5px 0;
 }
-.imgGrid a.small {
+.imgGrid .imgGridItem.small {
   width: 178px;
   height: 165px;
   background-image: url(http://placehold.it/178x165);
 }
-.imgGrid a.long {
+.imgGrid .imgGridItem.long {
   width: 361px;
   height: 165px;
   background-image: url(http://placehold.it/361x165);
 }
-.imgGrid a.large {
+.imgGrid .imgGridItem.large {
   width: 361px;
   height: 335px;
   background-image: url(http://placehold.it/361x335);
+}
+.imgGrid .imgGridItem.imgGrid3 {
+  margin: 0;
+  float: right;
+}
+.imgGrid .imgGridItem.imgGrid4,
+.imgGrid .imgGridItem.imgGrid5 {
+  margin: 0 5px 0 0;
+}
+.homeContent {
+  width: 100%;
+  padding: 0 15px;
+  overflow: hidden;
+  box-sizing: border-box;
+  -moz-box-sizing: border-box;
+  -webkit-box-sizing: border-box;
+}
+.homeContent .lastBook {
+  width: 630px;
+  float: left;
+  overflow: hidden;
+  margin: 0 40px 0 0;
+}
+.homeContent .side {
+  width: 210px;
+  float: left;
+  overflow: hidden;
+}
+.homeContent .side .btn.important {
+  display: block;
+}
+.homeContent .side .social {
+  list-style: none;
+  margin: 24px 0 0;
+  padding: 0;
+}
+.homeContent .side .social .social-item {
+  margin: 0 0 8px;
+}
+.homeContent .side .social .social-item a {
+  font-size: 14px;
+}
+.homeContent .side .social .social-item a i {
+  font-size: 24px;
+}
+.homeContent .side .social .social-item.facebook a {
+  color: #3b589c;
+}
+.homeContent .side .social .social-item.facebook a:hover {
+  color: #1f2e52;
+  text-decoration: none;
+}
+.homeContent .side .social .social-item.twitter a {
+  color: #1ab2e8;
+}
+.homeContent .side .social .social-item.twitter a:hover {
+  color: #0e6c8e;
+  text-decoration: none;
+}
+.homeContent .side .social .social-item.google-plus a {
+  color: #d84937;
+}
+.homeContent .side .social .social-item.google-plus a:hover {
+  color: #8d281c;
+  text-decoration: none;
 }
 *,
 *:after,

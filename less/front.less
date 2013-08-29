@@ -15,8 +15,28 @@ body {
     .box-sizing();
 }
 
+.content {
+    .container {
+        width: 100%;
+    }
+}
+
 span.book {
     font-family: 'Fauna One', serif;
+}
+
+h3 {
+    font-size: 16px;
+    color: @blue-dark;
+    background-color: @white-background;
+    padding: 7px 4px;
+    display: inline-block;
+}
+
+p {
+    text-align: justify;
+    line-height: 18px;
+    font-size: 13px;
 }
 
     // /
@@ -89,9 +109,13 @@ span.book {
 }
 
 .imgGrid {
-    a {
+    overflow: hidden;
+    margin: 0 0 50px;
+
+    .imgGridItem {
         display: block;
         float: left;
+        margin: 0 5px 5px 0;
 
         &.small {
             width: 178px;
@@ -109,6 +133,92 @@ span.book {
             width: 361px;
             height: 335px;
             background-image: url(http://placehold.it/361x335);
+        }
+
+        &.imgGrid3 {
+            margin: 0;
+            float: right;
+        }
+
+        &.imgGrid4,
+        &.imgGrid5 {
+            margin: 0 5px 0 0;
+        }
+    }
+}
+
+.homeContent {
+    width: 100%;
+    padding: 0 15px;
+    overflow: hidden;
+    .box-sizing();
+
+    .lastBook {
+        width: 630px;
+        float: left;
+        overflow: hidden;
+        margin: 0 40px 0 0;
+
+    }
+
+    .side {
+        width: 210px;
+        float: left;
+        overflow: hidden;
+
+        .btn.important {
+            display: block;
+        }
+
+        .social {
+            list-style: none;
+            margin: 24px 0 0;
+            padding: 0;
+
+            .social-item {
+                margin: 0 0 8px;
+
+                a {
+                    font-size: 14px;
+
+                    i {
+                        font-size: 24px;
+                    }
+                }
+
+                &.facebook {
+                    a {
+                        color: @facebook-color;
+
+                        &:hover {
+                            color: darken(@facebook-color, 20%);
+                            text-decoration: none;
+                        }
+                    }
+                }
+
+                &.twitter {
+                    a {
+                        color: @twitter-color;
+
+                        &:hover {
+                            color: darken(@twitter-color, 20%);
+                            text-decoration: none;
+                        }
+                    }
+                }
+
+                &.google-plus {
+                    a {
+                        color: @google-plus-color;
+
+                        &:hover {
+                            color: darken(@google-plus-color, 20%);
+                            text-decoration: none;
+                        }
+                    }
+                }
+            }
         }
     }
 }
