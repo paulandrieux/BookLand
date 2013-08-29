@@ -3,7 +3,7 @@
     // Cet objet concerne toutes informations necessaire à un book
 
     class book {
-        protected $idBook;
+        protected $id;
         protected $creationDate;
         protected $lastName;
         protected $firstName;
@@ -11,9 +11,13 @@
         protected $phone;
         protected $website;
         protected $description;
+        protected $commentaire1;
+        // protected $commentaire2;
+        // protected $commentaire3;
+        // protected $commentaire4;
 
-        public function __construct ($idBook, $creationDate, $lastName, $firstName, $mail, $phone, $website, $description) {
-            $this -> idBook = $idBook;
+        public function __construct ($id, $creationDate, $lastName, $firstName, $mail, $phone, $website, $description, $commentaire1) {
+            $this -> id = $id;
             $this -> creationDate = $creationDate;
             $this -> lastName = $lastName;
             $this -> firstName = $firstName;
@@ -21,13 +25,17 @@
             $this -> phone = $phone;
             $this -> website = $website;
             $this -> description = $description;
+            $this -> commentaire1 = $commentaire1;
+            // $this -> commentaire2 = $commentaire2;
+            // $this -> commentaire3 = $commentaire3;
+            // $this -> commentaire4 = $commentaire4;
         }
 
         public function getIdBook () {
-            return $this -> idBook;
+            return $this -> id;
         }
         public function setIdBook ($setData) {
-            $this -> idBook = $setData;
+            $this -> id = $setData;
         }
 
         public function getCreationDate () {
@@ -79,27 +87,32 @@
             $this -> description = $setData;
         }
 
-        public function addBookInDb ($pdo) {
-            $searchplace = $pdo -> prepare('SELECT mail FROM book WHERE mail=?');
-            $paramsearch = array($this -> getMail());
-            $searchplace -> execute($paramsearch);
-
-            if ($searchplace -> rowCount() > 0) {
-                return "already in ddb";
-            } else {
-                $req = $pdo -> prepare('INSERT INTO book SET firstName=:firstName, lastName=:lastName, mail=:mail, phone=:phone, website=:website, description=:description');
-                $parametres = array('firstName' => $this -> getFirstName(), 'lastName' => $this -> getLastName(), 'mail' => $this -> getMail(), 'phone' => $this -> getPhone(), 'website' => $this -> getWebsite(), 'description' => $this -> getDescription());
-                $req -> execute($parametres);
-            }
+        public function getCommentaire1 () {
+            return $this -> commentaire1;
+        }
+        public function setCommentaire1 ($setData) {
+            $this -> commentaire1 = $setData;
         }
 
-        public function setIdBookFromDb ($pdo) {
-            $bookData = $pdo -> query('SELECT * FROM book WHERE mail='.$this -> mail);
+        // public function getCommentaire2 () {
+        //     return $this -> commentaire2;
+        // }
+        // public function setCommentaire2 ($setData) {
+        //     $this -> commentaire2 = $setData;
+        // }
 
-            if ($data = $bookData->fetch()) {
-                $this -> idBook = $data['id'];
-            }
-        }
+        // public function getCommentaire3 () {
+        //     return $this -> commentaire3;
+        // }
+        // public function setCommentaire3 ($setData) {
+        //     $this -> commentaire3 = $setData;
+        // }
 
+        // public function getCommentaire4 () {
+        //     return $this -> commentaire4;
+        // }
+        // public function setCommentaire4 ($setData) {
+        //     $this -> commentaire4 = $setData;
+        // }
     }
 ?>

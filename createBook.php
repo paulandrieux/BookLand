@@ -3,6 +3,7 @@
     include('./php/pdo.php');
     include('./php/bookClass.php');
     include('./php/contactClass.php');
+    include('./php/functions.php');
     include('./php/imgClass.php');
 ?>
 <!DOCTYPE html>
@@ -22,7 +23,7 @@
 
 
         <!-- Book registrering form -->
-        <form name="createBook" enctype="multipart/form-data" method="post" action="#">
+        <form name="createBook" enctype="multipart/form-data" method="post" action="">
             <input type="text" class="firstName" name="firstName" placeholder="Prénom">
             <input type="text" class="lastName" name="lastName" placeholder="Nom">
             <br>
@@ -34,8 +35,18 @@
             <br>
             <input type="text" class="description" name="description" placeholder="Description">
             <br>
-            <input type="file" name="dlImg" size="50">
+            <input type="hidden" name="max_file_size" value="1048576" />
+            <input type="file" name="dlImg">
             <input type="text" name="ImgDescription">
+            <input type="hidden" name="max_file_size" value="1048576" />
+            <input type="file" name="dlImg2">
+            <input type="text" name="ImgDescription2">
+            <input type="hidden" name="max_file_size" value="1048576" />
+            <input type="file" name="dlImg3">
+            <input type="text" name="ImgDescription3">
+            <input type="hidden" name="max_file_size" value="1048576" />
+            <input type="file" name="dlImg4">
+            <input type="text" name="ImgDescription4">
             <br>
             <button type="submit" name="submit">Send data</button>
 
@@ -43,25 +54,39 @@
 
 
         <?php
-            if (isset($_POST['submit']) && ($_POST['mail'] == $_POST['mailConfirm'])) {
-                $book = new book ('','',$_POST['lastName'],$_POST['firstName'],$_POST['mail'],$_POST['phone'],$_POST['website'],$_POST['description']);
-                echo $book -> addBookInDb($pdo);
-                $book -> setIdBookFromDb($pdo);
+            if (isset($_POST['submit'])) {
 
-                if ((isset($_FILES['dlImg']['tmp_name'])&&($_FILES['dlImg']['error'] == UPLOAD_ERR_OK))) {
-                    $pathDestination = 'img/bookImg/';
-                    $imgName = $book -> getIdBook().'_'.$_FILES['dlImg']['name'];
-                    move_uploaded_file($_FILES['dlImg']['tmp_name'], $pathDestination.$imgName);
-                    $img1 = new img('',$book -> getIdBook(),$imgName,$_POST['ImgDescription']);
-                    $img1 -> addImginDb($pdo);
-                } else {
-                    echo "the upload of the image failed";
-                }
+                if ($_POST['mail'] == $_POST['mailConfirm']) {
+                    $nom = $_POST['lastName'];
+                    $prenom = $_POST['firstName'];
+                    $mail = $_POST['mail'];
+                    $telephone = $_POST['phone'];
+                    $website = $_POST['website'];
+                    $description = $_POST['description'];
+                    $commentaire1 = $_POST['ImgDescription'];
+                    $commentaire2 = $_POST['ImgDescription2'];
+                    $commentaire3 = $_POST['ImgDescription3'];
+                    $commentaire4 = $_POST['ImgDescription4'];
 
-            } else {
-                echo "the mails are differents";
+                    addBookInDb($pdo,$nom,$prenom,$mail,$telephone,$website,$description,$commentaire1,$commentaire2,$commentaire3,$commentaire4);
+
+
+                //     if ((isset($_FILES['dlImg']['tmp_name'])&&($_FILES['dlImg']['error'] == UPLOAD_ERR_OK))) {
+                //         $pathDestination = 'img/bookImg/';
+                //         $imgName = $id.'_'.$_FILES['dlImg']['name'];
+                //         move_uploaded_file($_FILES['dlImg']['tmp_name'], $pathDestination.$imgName);
+                //         $img1 = new img('',$book -> getIdBook(),$imgName,$_POST['ImgDescription']);
+                //         $img1 -> addImginDb($pdo);
+                //     } else {
+                //         echo "the upload of the image failed";
+                //     }
+
+                // } else {
+                //     echo "the mails are differents";
+                // }
             }
 
+        }
                 
         ?>
 
