@@ -3,28 +3,12 @@
     include('./php/bookClass.php');
     include('./php/contactClass.php');
     include('./php/functions.php');
-
-    $idBook = $_GET['id'];
-
-    /* To factorize */
-        $bookData = $pdo -> query('SELECT * FROM book WHERE id='.$idBook);
-        if ($data = $bookData->fetch()) {
-            $book = new book ($data['id'],$data['creationDate'],$data['lastName'], $data['firstName'], $data['mail'], $data['phone'], $data['website'], $data['description']);
-        }
-
-        $imageData = $pdo -> query('SELECT * FROM images WHERE id_du_book='.$idBook);
-        if ($dataImage = $imageData->fetch()) {
-            $images = new book ($dataImage['extension']);
-        }
-
-    /* --- */
 ?>
-
 <!DOCTYPE html>
 <html>
     <head>
         <meta charset="utf-8">
-        <title>PHP - Create Book</title>
+        <title>PHP - Affichage de tout les résultats</title>
 
         <link href="./less/style.css" rel="stylesheet">
         <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.10.1/jquery.min.js"></script>
@@ -34,15 +18,10 @@
         <header></header>
 
 <!-- END COMMUN PART -->
-        <!-- Affiche les initiales en majuscule dans le h1 et la description dans le h2 -->
-        <h1><?php echo strtoupper(substr($book -> getFirstName(), 0, 1)).strtoupper(substr($book -> getLastName(), 0, 1)) ?></h1>
-        <h2><?php echo $book -> getDescription() ?></h2>
-        <?php echo "<img src='img/bookImg/".$idBook."_".$book -> getFirstName()."_1.png' />"; ?>
 
-        <?php echo "<img src='img/bookImg/".$idBook."_".$book -> getFirstName()."_2.png' />"; ?>
-        <?php echo "<img src='img/bookImg/".$idBook."_".$book -> getFirstName()."_3.png' />"; ?>
-        <?php echo "<img src='img/bookImg/".$idBook."_".$book -> getFirstName()."_4.png' />"; ?>
-        
+        <div class="capsule">
+            <?php listBooks($pdo); ?>
+        </div>
 
 <!-- START COMMUN PART -->
 
